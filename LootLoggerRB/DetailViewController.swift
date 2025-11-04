@@ -13,6 +13,25 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func choosePhotoSource(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: nil,
+                                                    message: nil,
+                                                    preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
+                print("Present camera")
+            }
+            alertController.addAction(cameraAction)
+
+            let photoLibraryAction
+                    = UIAlertAction(title: "Photo Library", style: .default) { _ in
+                print("Present photo library")
+            }
+            alertController.addAction(photoLibraryAction)
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+        
+            present(alertController, animated: true, completion: nil)
     }
     
     @IBOutlet var nameField: UITextField!
